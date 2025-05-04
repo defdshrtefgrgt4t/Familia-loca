@@ -146,22 +146,32 @@
   <script>
     const emojis = ['🎮', '😎', '😂']; // Lista de emojis
 
-    function createFloatingEmoji() {
-      const emoji = document.createElement('div');
-      emoji.classList.add('floating-icon');
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)]; // Elige un emoji aleatorio
-      emoji.style.left = Math.random() * 100 + 'vw'; // Posición aleatoria en el eje X
-      emoji.style.animationDuration = Math.random() * 3 + 4 + 's'; // Duración aleatoria de la animación
-      document.body.appendChild(emoji);
+    function createFloatingEmoji(emoji) {
+      const floatingIcon = document.createElement('div');
+      floatingIcon.classList.add('floating-icon');
+      floatingIcon.textContent = emoji;
+      floatingIcon.style.left = Math.random() * 100 + 'vw'; // Posición aleatoria en el eje X
+      floatingIcon.style.animationDuration = Math.random() * 3 + 4 + 's'; // Duración aleatoria de la animación
+      document.body.appendChild(floatingIcon);
       setTimeout(() => {
-        emoji.remove();
+        floatingIcon.remove();
       }, 7000); // Elimina el emoji después de 7 segundos
     }
 
-    // Genera emojis aleatorios cada 500ms
-    setInterval(createFloatingEmoji, 500);
+    // Genera emojis aleatorios cada 500ms para cada tipo de emoji
+    setInterval(() => {
+      createFloatingEmoji(emojis[0]); // 🎮
+      createFloatingEmoji(emojis[1]); // 😎
+      createFloatingEmoji(emojis[2]); // 😂
+    }, 500);
+
+    // Función para redirigir al botón de volver
+    function regresar() {
+      window.history.back(); // Redirige a la página de donde se vino
+    }
   </script>
 
-  <div class="back-button" onclick="window.history.back();">Volver</div>
+  <!-- Botón de volver -->
+  <div class="back-button" onclick="regresar()">Volver</div>
 </body>
 </html>
