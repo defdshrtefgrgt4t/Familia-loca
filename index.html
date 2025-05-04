@@ -72,21 +72,22 @@
       color: #ff1a4b;
     }
 
-    /* Estilo de los emojis flotantes */
+    /* Estilo de los emojis flotantes (lluvia) */
     .floating-icon {
       position: absolute;
       font-size: 2rem;
-      animation: float 5s linear infinite;
+      animation: fall 5s linear infinite;
     }
 
-    @keyframes float {
+    /* Animación de caída (lluvia) */
+    @keyframes fall {
       0% {
+        top: -10%;
         opacity: 1;
-        transform: translateY(100vh);
       }
       100% {
+        top: 100%;
         opacity: 0;
-        transform: translateY(-100vh);
       }
     }
 
@@ -142,29 +143,24 @@
     allowfullscreen></iframe>
   </div>
 
-  <!-- Generación de emojis flotantes -->
+  <!-- Generación de emojis flotantes (lluvia) -->
   <script>
     const emojis = ['🎮', '😎', '😂']; // Lista de emojis
 
-    function createFloatingEmoji(emoji) {
-      const floatingIcon = document.createElement('div');
-      floatingIcon.classList.add('floating-icon');
-      floatingIcon.textContent = emoji;
-      floatingIcon.style.left = Math.random() * 100 + 'vw'; // Posición aleatoria en el eje X
-      floatingIcon.style.animationDuration = Math.random() * 3 + 4 + 's'; // Duración aleatoria de la animación
-      document.body.appendChild(floatingIcon);
+    function createFallingEmoji() {
+      const emoji = document.createElement('div');
+      emoji.classList.add('floating-icon');
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)]; // Elige un emoji aleatorio
+      emoji.style.left = Math.random() * 100 + 'vw'; // Posición aleatoria en el eje X
+      document.body.appendChild(emoji);
       setTimeout(() => {
-        floatingIcon.remove();
-      }, 7000); // Elimina el emoji después de 7 segundos
+        emoji.remove(); // Elimina el emoji después de que haya caído
+      }, 5000); // Duración de la animación de caída
     }
 
-    // Genera emojis aleatorios cada 500ms para cada tipo de emoji
-    setInterval(() => {
-      createFloatingEmoji(emojis[0]); // 🎮
-      createFloatingEmoji(emojis[1]); // 😎
-      createFloatingEmoji(emojis[2]); // 😂
-    }, 500);
-
+    // Genera emojis cada 100ms para crear la lluvia de emojis
+    setInterval(createFallingEmoji, 100);
+    
     // Función para redirigir al botón de volver
     function regresar() {
       window.history.back(); // Redirige a la página de donde se vino
