@@ -72,45 +72,21 @@
       color: #ff1a4b;
     }
 
-    .floating-icons {
+    /* Estilo de los emojis flotantes */
+    .floating-icon {
       position: absolute;
       font-size: 2rem;
       animation: float 5s linear infinite;
     }
 
-    .floating-icons:nth-child(1) {
-      left: 10vw;
-      animation-duration: 5s;
-    }
-
-    .floating-icons:nth-child(2) {
-      left: 20vw;
-      animation-duration: 4s;
-    }
-
-    .floating-icons:nth-child(3) {
-      left: 30vw;
-      animation-duration: 6s;
-    }
-
-    .floating-icons:nth-child(4) {
-      left: 50vw;
-      animation-duration: 7s;
-    }
-
-    .floating-icons:nth-child(5) {
-      left: 60vw;
-      animation-duration: 6s;
-    }
-
     @keyframes float {
       0% {
-        top: 100%;
         opacity: 1;
+        transform: translateY(100vh);
       }
       100% {
-        top: -50%;
         opacity: 0;
+        transform: translateY(-100vh);
       }
     }
 
@@ -166,19 +142,26 @@
     allowfullscreen></iframe>
   </div>
 
-  <!-- Íconos flotantes -->
-  <div class="floating-icons">🎮</div>
-  <div class="floating-icons">😎</div>
-  <div class="floating-icons">😂</div>
-  <div class="floating-icons">🎮</div>
-  <div class="floating-icons">😎</div>
-
+  <!-- Generación de emojis flotantes -->
   <script>
-    function regresar() {
-      window.history.back(); // Función para regresar
+    const emojis = ['🎮', '😎', '😂']; // Lista de emojis
+
+    function createFloatingEmoji() {
+      const emoji = document.createElement('div');
+      emoji.classList.add('floating-icon');
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)]; // Elige un emoji aleatorio
+      emoji.style.left = Math.random() * 100 + 'vw'; // Posición aleatoria en el eje X
+      emoji.style.animationDuration = Math.random() * 3 + 4 + 's'; // Duración aleatoria de la animación
+      document.body.appendChild(emoji);
+      setTimeout(() => {
+        emoji.remove();
+      }, 7000); // Elimina el emoji después de 7 segundos
     }
+
+    // Genera emojis aleatorios cada 500ms
+    setInterval(createFloatingEmoji, 500);
   </script>
 
-  <div class="back-button" onclick="regresar()">Volver</div>
+  <div class="back-button" onclick="window.history.back();">Volver</div>
 </body>
 </html>
