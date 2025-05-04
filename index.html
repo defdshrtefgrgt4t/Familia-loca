@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>1Informática B</title>
+  <title>Bienvenidos a la familia de I.CRAK-YT</title>
   <style>
     * {
       margin: 0;
@@ -38,29 +38,12 @@
       color: #ff66cc;
     }
 
-    .subtitulo {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-      color: #ffb3c6;
-      font-weight: normal;
-    }
-
-    button {
-      background-color: #ff4d6d;
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 10px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 0 10px #ff4d6d;
-      transition: transform 0.2s ease;
-      z-index: 1;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      background-color: #ff1a4b;
+    .texto-gaming {
+      font-size: 1.5rem;
+      color: #00FF00; /* Verde gamer */
+      font-weight: bold;
+      text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+      margin-bottom: 30px;
     }
 
     .developer {
@@ -76,46 +59,57 @@
       content: "👨‍💻 ";
     }
 
-    .heart {
+    .back-button {
+      font-size: 1.2rem;
+      color: #ff4d6d;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-top: 20px;
+      z-index: 1;
+    }
+
+    .back-button:hover {
+      color: #ff1a4b;
+    }
+
+    .floating-icons {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: float 8s linear infinite;
-      z-index: 0;
+      font-size: 2rem;
+      animation: float 5s linear infinite;
     }
 
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
+    .floating-icons:nth-child(1) {
+      left: 10vw;
+      animation-duration: 5s;
     }
 
-    .heart::before {
-      top: -10px;
-      left: 0;
+    .floating-icons:nth-child(2) {
+      left: 20vw;
+      animation-duration: 4s;
     }
 
-    .heart::after {
-      left: -10px;
-      top: 0;
+    .floating-icons:nth-child(3) {
+      left: 30vw;
+      animation-duration: 6s;
+    }
+
+    .floating-icons:nth-child(4) {
+      left: 50vw;
+      animation-duration: 7s;
+    }
+
+    .floating-icons:nth-child(5) {
+      left: 60vw;
+      animation-duration: 6s;
     }
 
     @keyframes float {
       0% {
-        bottom: -50px;
-        opacity: 0;
-      }
-      50% {
+        top: 100%;
         opacity: 1;
       }
       100% {
-        bottom: 110%;
+        top: -50%;
         opacity: 0;
       }
     }
@@ -123,38 +117,68 @@
     audio {
       display: none;
     }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .texto-gaming {
+        font-size: 1.2rem;
+      }
+
+      .back-button {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .texto-gaming {
+        font-size: 1rem;
+      }
+
+      .back-button {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>1Informática "B"</h1>
-  <div class="subtitulo">Somos una familia, hijos de su chingada madre ❤️</div>
-  <button onclick="unirse()">Unirse a la familia</button>
-  <div class="developer">Desarrollador: Maximo Cj</div>
+  <h1>Bienvenidos a la familia de I.CRAK-YT</h1>
+  <div class="texto-gaming">¡Siempre se pone más difícil antes de subir de nivel, no frenes! ❤</div>
+  <div class="developer">Desarrollador: MCJ</div>
 
-  <!-- Música de fondo -->
+  <!-- Música de fondo (canción libre de derechos) -->
   <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    <source src="https://www.bensound.com/bensound-music/bensound-epic.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
 
-  <!-- Corazones animados -->
+  <!-- Incluir el video de YouTube -->
+  <div style="width: 100%; max-width: 600px; margin: 20px 0;">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/uHjW3zxbyf4?autoplay=1&loop=1&playlist=uHjW3zxbyf4" 
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+  </div>
+
+  <!-- Íconos flotantes -->
+  <div class="floating-icons">🎮</div>
+  <div class="floating-icons">😎</div>
+  <div class="floating-icons">😂</div>
+  <div class="floating-icons">🎮</div>
+  <div class="floating-icons">😎</div>
+
   <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 3 + 5 + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
-    }
-
-    setInterval(createHeart, 300);
-
-    function unirse() {
-      alert("¡Ya eres parte de esta hermosa y malhablada familia! ❤️🔥");
+    function regresar() {
+      window.history.back(); // Función para regresar
     }
   </script>
+
+  <div class="back-button" onclick="regresar()">Volver</div>
 </body>
 </html>
