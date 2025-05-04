@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Somos Una Familia</title>
+  <title>1Informática B</title>
   <style>
     * {
       margin: 0;
@@ -23,6 +23,7 @@
       text-align: center;
       color: #fff;
       padding: 20px;
+      position: relative;
     }
 
     h1 {
@@ -36,6 +37,13 @@
       margin-bottom: 20px;
     }
 
+    .subtitulo {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: #ffb3c6;
+      font-weight: normal;
+    }
+
     button {
       background-color: #ff4d6d;
       color: white;
@@ -47,7 +55,6 @@
       box-shadow: 0 0 10px #ff4d6d;
       transition: transform 0.2s ease;
       z-index: 1;
-      margin-bottom: 40px;
     }
 
     button:hover {
@@ -55,23 +62,19 @@
       background-color: #ff1a4b;
     }
 
-    .footer {
-      text-align: center;
-      margin-top: auto;
+    .developer {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: #ffffff;
+      opacity: 0.85;
+      font-style: italic;
       z-index: 1;
     }
 
-    .footer h2 {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
+    .developer::before {
+      content: "👨‍💻 ";
     }
 
-    .footer small {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-
-    /* corazones animados */
     .heart {
       position: absolute;
       width: 20px;
@@ -122,13 +125,10 @@
   </style>
 </head>
 <body>
-  <h1>SOMOS UNA FAMILIA, HIJOS DE SU CHINGADA MADRE ❤️</h1>
+  <h1>1Informática "B"</h1>
+  <div class="subtitulo">Somos una familia, hijos de su chingada madre ❤️</div>
   <button onclick="unirse()">Unirse a la familia</button>
-
-  <div class="footer">
-    <h2>1info B</h2>
-    <small>Desarrollador: Maximo Clavijo</small>
-  </div>
+  <div class="developer">Desarrollador: Maximo Clavijo</div>
 
   <!-- Música de fondo -->
   <audio autoplay loop>
